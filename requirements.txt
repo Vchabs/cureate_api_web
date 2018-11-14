@@ -9,3 +9,5 @@ pytz==2018.5
 redis==2.10.6
 sqlparse==0.2.4
 django-cors-headers
+django-heroku
+gunicorn
