@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block content %}
+<center>
+      <div class="jumbotron">
+        <h1>Curate</h1>
+	<p> Hello, {% if request.user.is_authenticated %}
+		    {{ request.user.username }}
+            {% endif %}, Welcome to Curate.
+        </p>
+
+    	</div>
+
+      <div class="row marketing">
+      {% if object_list %}            
+      <ul>
+      {% for article in object_list %}
+<!--         <li> 
+ -->   <div class="jumbotron">
+
+          <h4>{{ article.title }}</h4>
+          <p>{{article.description}}</p>
+        </div>
+<!--         </li>
+ -->
+    </ul>
+
+       {% endfor %}
+    {% else %}
+      <p>There is no health information pushed to you yet!</p>
+    {% endif %}       
+      </div>
+
+
+</center>
+{% endblock %}

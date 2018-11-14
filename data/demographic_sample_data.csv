@@ -1,0 +1,19 @@
+Full Name,Preferred Name (nickname),Age Range Low,Age Range High,Location (zip code),Education Level,Sex,Smoking,Alcohol (need to fix),Activity Level,Race
+<free text>,<free text>,0,18,integer,Less than High School,Male,Never Smoked,1x week (social),Minimal (brisk walk 30min a day),White
+,,19,25,,High School,Female,Past Smoker,2-3x week (casual),Moderate (workout 1-2x week w/ high HR),Black or African American
+,,26,30,,College,,Current Smoker,4-6x week (moderate),Heavy (work out 3+ days a week),American Indian and Alaska Native
+,,31,35,,Adv. Degree,,,6-10x week (heavy),,Asian
+,,36,40,,,,,10+ week (binge),,Native Hawaiian and Other Pacific Islander
+,,41,45,,,,,,,Two or more races
+,,46,50,,,,,,,
+,,51,55,,,,,,,
+,,56,60,,,,,,,
+,,61,65,,,,,,,
+,,66,70,,,,,,,
+,,71,75,,,,,,,
+,,76,80,,,,,,,
+,,81,85,,,,,,,
+,,86,90,,,,,,,
+,,91,95,,,,,,,
+,,96,100,,,,,,,
+,,,,,,,,,,
