@@ -43,8 +43,10 @@ class Command(BaseCommand):
             for line in f:
                 if n > 0:
                     v = [x.strip('\n') for x in line.split(',')]
+                    description_text = ','.join(v[10: ])
+                    v = v[:10]
                     v = [None if (x == '') or (x == ' ') else x for x in v]
-                    description_text = ','.join(v[11: ])
+                    
                     content_type = ContentType.objects.get_or_create(value = 'Article')[0]
                     content = Content.objects.get_or_create(title = 'test',description = description_text,image_url = 'test', content_type = content_type)[0]
                     
