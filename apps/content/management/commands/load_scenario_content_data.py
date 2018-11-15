@@ -13,8 +13,8 @@ from django.contrib.auth.models import User
 
 
 def _get_age_ranges(low,high):
-    if not(low is None and high is None):
-        age_ranges = []
+    age_ranges = []
+    if not(low is None and high is None):       
         i = low
         if low < 19:
             age_ranges.append(NumericRange(0,18))
@@ -22,11 +22,9 @@ def _get_age_ranges(low,high):
             age_ranges.append(NumericRange(19,25))
             i = 26
         while (i > 25) and (i <= high):
-            age_ranges.append(NumericRange(i,i + 5))
+            age_ranges.append(NumericRange(i,i + 4))
             i += 5
-        return age_ranges
-    else:
-        return None 
+    return age_ranges
 
 
 
@@ -40,20 +38,21 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
 
-        with open('data/sample_data.csv') as f:
+        with open('data/content_sample_data.csv') as f:
             n = 0
             for line in f:
                 if n > 0:
                     v = [x.strip('\n') for x in line.split(',')]
-                    v = map(lambda x: if (x = '') or (x = ' '): None, v)
-
-                    description_text = ', '.join(v[10: ])
-                    content = Content.objects.get_or_create(description = description_text)
+                    v = [None if (x == '') or (x == ' ') else x for x in v]
+                    description_text = ','.join(v[11: ])
+                    content_type = ContentType.objects.get_or_create(value = 'Article')[0]
+                    content = Content.objects.get_or_create(title = 'test',description = description_text,image_url = 'test', content_type = content_type)[0]
                     
 
-                    age_ranges = _get_age_ranges(v[0],v[1])
+                    age_ranges = _get_age_ranges(int(v[0]),int(v[1]))
                     #Make better
-                    if not(age_ranges is None):
+
+                    if len(age_ranges) > 0:
                         for ar in age_ranges:
                             age = AgeLevel.objects.get(value = ar)
                             content.age_level.add(age)
@@ -70,10 +69,10 @@ class Command(BaseCommand):
 
                     if not(v[3] is None):
                         r = Race.objects.get(value=v[3])
-                        content.gender.add(r)
+                        content.race.add(r)
                     else:
                         for r in Race.objects.all():
-                            content.gender.add(r)
+                            content.race.add(r)
 
                     if not(v[4] is None):
                         rl = ReadingLevel.objects.get(value=v[4])
@@ -103,9 +102,10 @@ class Command(BaseCommand):
                         for al in ActivityLevel.objects.all():
                             content.activity_level.add(al)
 
+                    
                     ds = Disease.objects.get(value=v[8])
                     content.diseases.add(ds)
-                    if not(v[8] is None):
+                    if not(v[9] is None):
                         comp = Complication.objects.get(value=v[8],disease = ds)
                         content.complications.add(comp)
 
