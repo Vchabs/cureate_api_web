@@ -11,3 +11,4 @@ sqlparse==0.2.4
 django-cors-headers
 django-heroku
 gunicorn
+dj_database_url
