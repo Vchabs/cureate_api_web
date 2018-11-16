@@ -8,7 +8,7 @@ from .models import Content
 from demographics.models import AgeLevel, Gender,Race, ReadingLevel, SmokingStatus,AlcoholStatus,ActivityLevel
 from diseases.models import Disease, Complication
 
-from django.views.generic import ListView
+from django.views.generic import ListView, DetailView
 
 from users.models import User
 
@@ -45,6 +45,11 @@ class ContentListView(LoginRequiredMixin,ListView):
         
         return Content.objects.filter(**kwargs)
 
+
+
+class ContentDetailView(DetailView):
+    model = Content
+    template_name = "content_detail.html"
 
 
 

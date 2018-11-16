@@ -1,48 +1,44 @@
 <!DOCTYPE html>
 {% load static from staticfiles %}
 <html lang="en">
-  <head>
-    <title>Bootstrap Example</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Merriweather" />
-    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans" />
-  </head>
-  <body>
-    {% block header %}
-     <div class="container">
-      <div class="header clearfix">
-        <nav class="navbar navbar-inverse">
-          <div class="container-fluid">
-            <div class="navbar-header">
-              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>                        
-              </button>
-              <a class="navbar-brand" href="#" style="font-family:Open Sans;">Curate</a>
-            </div>
-            <div class="collapse navbar-collapse" id="myNavbar">
-              <ul class="nav navbar-nav">
-                <li class="active"><a href="#">Home</a></li>
-                <li><a href="#" style="font-family:Open Sans;">About</a></li>
-                <li><a href="#" style="font-family:Open Sans;">Projects</a></li>
-                <li><a href="#" style="font-family:Open Sans;">Contact</a></li>
-              </ul>
-              <ul class="nav navbar-nav navbar-right">
-                <li><a href="#" style="font-family:Open Sans;"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-              </ul>
-            </div>
-          </div>
-        </nav>
-        <h3 class="text-muted">Curate your Future</h3>
-      </div>
-    <div class="starter-template">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Merriweather" />
+  <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans" />
 
+</head>
+  <body>
+    {% block navbar %}
+    
+<nav class="navbar navbar-inverse navbar-static-top" style='background-color: #204157;'>
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand" href="#" style="font-family:Open Sans;color: #F4F0E6;font-weight:bold;font-size:32px">Curate</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li><a href="#" style="font-family:Open Sans;color: #F4F0E6;">Home</a></li>
+        <li><a href="#" style="font-family:Open Sans;color: #F4F0E6;">About</a></li>
+        <li><a href="#" style="font-family:Open Sans;color: #F4F0E6;">Projects</a></li>
+        <li><a href="#" style="font-family:Open Sans;color: #F4F0E6;">Contact</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#" style="font-family:Open Sans;color: #F4F0E6;"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
       {% endblock %}
 
     {% block content %}
@@ -55,8 +51,8 @@
     {% block footer %}
       </div>
 
-      <footer class="footer">
-        <p>&copy; 2016 Company, Inc.</p>
+      <footer class="container-fluid text-center">
+        <p>Copyright 2018</p>
       </footer>
 
     </div> 
