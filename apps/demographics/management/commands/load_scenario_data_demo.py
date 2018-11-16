@@ -17,7 +17,14 @@ def sanitize_get_or_create(Model,input):
 
 class Command(BaseCommand):
     help = 'Loads data'
-
+    ReadingLevel.objects.all().delete()
+    Race.objects.all().delete()
+    AgeLevel.objects.all().delete()
+    Gender.objects.all().delete()
+    SmokingStatus.objects.all().delete()
+    AlcoholStatus.objects.all().delete()
+    ActivityLevel.objects.all().delete()
+    
 
     def handle(self, *args, **options):
         with open('data/demographic_sample_data.csv') as f:

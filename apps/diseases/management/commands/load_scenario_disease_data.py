@@ -30,6 +30,8 @@ class Command(BaseCommand):
 
 
     def handle(self, *args, **options):
+        Disease.objects.all().delete()
+        Complication.objects.all().delete()
         with open('data/disease_sample_data.csv') as f:
             #iterate through spreadsheets 
             n = 0
