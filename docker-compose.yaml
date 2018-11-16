@@ -25,6 +25,24 @@ services:
     depends_on:
       - db
 
+  showmigrations:
+    build: .
+    command: python3 manage.py showmigrations --settings=dev.settings.dev
+    environment:
+      - DEBUG=False
+      - DATABASE_ENGINE=django.db.backends.postgresql
+      - DATABASE_NAME=postgres
+      - DATABASE_USER=postgres
+      - DATABASE_PASSWORD=password #TODO set on postgres instance
+      - DATABASE_HOST=db
+      - DATABASE_PORT=5432
+      - SECRET_KEY=fsgsweoriqwevnzasdf43
+      - USER_ID='docker'    
+    volumes:
+      - .:/code
+    depends_on:
+      - db
+
   migrate:
     build: .
     command: python3 manage.py migrate --settings=dev.settings.dev
@@ -61,7 +79,7 @@ services:
     depends_on:
       - db
 
-  load_sample_disease_demo:
+  load_sample_disease_data:
     build: .
     command: python3 manage.py load_scenario_disease_data
     environment:
@@ -82,6 +100,24 @@ services:
   load_sample_content_data:
     build: .
     command: python3 manage.py load_scenario_content_data
+    environment:
+      - DEBUG=False
+      - DATABASE_ENGINE=django.db.backends.postgresql
+      - DATABASE_NAME=postgres
+      - DATABASE_USER=postgres
+      - DATABASE_PASSWORD=password #TODO set on postgres instance
+      - DATABASE_HOST=db
+      - DATABASE_PORT=5432
+      - SECRET_KEY=fsgsweoriqwevnzasdf43
+      - USER_ID='docker'    
+    volumes:
+      - .:/code
+    depends_on:
+      - db
+
+  load_sample_user_data:
+    build: .
+    command: python3 manage.py load_scenario_user_data
     environment:
       - DEBUG=False
       - DATABASE_ENGINE=django.db.backends.postgresql
