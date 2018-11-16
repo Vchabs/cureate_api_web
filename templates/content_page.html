@@ -14,17 +14,38 @@
     <div class="col-3-10"> 
       {% if content_list %}            
 
+        
         {% for article in content_list %}
+          {% if forloop.first %}
+            <div class="row">
+          {% endif %}
+          <div class="col-xs-4">
+            <div class="panel panel-default">
+              <div class="panel-heading" style="background-color:#F4F0E6">
+                <h4 style="font-family:Merriweather;font-weight:bold;color:#204157">{{ article.title }}</h4>
+              </div>
+              <div class="panel-body">
+                <a href="{% url 'detail' article.ID %}">
+                  <img style="height:150px" src={{ article.image_url }}>
+                </a>
+             </div>
+            </div>
+          </div>
+          {% if forloop.counter|divisibleby:3 %}</div><div class="row">{% endif %}
+          {% if forloop.last %}</div>{% endif %}
+        {% endfor %}
+
+<!--         {% for article in content_list %}
           <div class="panel panel-default">
             <div class="panel-heading" style="background-color:#F4F0E6">
               <h4 style="font-family:Merriweather;font-weight:bold;color:#204157">{{ article.title }}</h4>
             </div>
             <div class="panel-body">
-              <img src={{ article.image_url }}>
+              <img style="height:200px" src={{ article.image_url }}>
           </div>
         </div>
 
-        {% endfor %}
+        {% endfor %} -->
       {% else %}
         <p>There is no health information pushed to you yet!</p>
       {% endif %}  

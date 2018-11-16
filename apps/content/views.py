@@ -32,16 +32,21 @@ class ContentListView(LoginRequiredMixin,ListView):
     """
     model = Content
     context_object_name = 'content_list' 
-    #queryset = Content.objects.all()
-    # kwargs = {"gender": Gender.objects.get(value = 'Male')}
-    # queryset = Content.objects.filter(**kwargs)
+
     template_name = 'content_page.html'
 
     def get_queryset(self):
         user = self.request.user 
-        kwargs = {"gender":user.gender}
-
-        
+        kwargs = {"gender":user.gender,
+                "diseases":user.disease,
+                #"complications":user.complication,
+                #"race":user.race,
+                # "age_level":user.age_level,
+                # "reading_level":user.reading_level,
+                "smoking_status":user.smoking_status,
+                "alcohol_status":user.alcohol_status, 
+                "activity_level":user.activity_level
+                }
         
         return Content.objects.filter(**kwargs)
 
