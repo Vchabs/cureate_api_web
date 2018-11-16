@@ -14,6 +14,7 @@ class Command(BaseCommand):
 
 
     def handle(self, *args, **options):
+        User.objects.all().delete()
         gender = Gender.objects.get(value = 'Male')
         age = AgeLevel.objects.get(value = NumericRange(41,45))
         race = Race.objects.get(value = 'White')
