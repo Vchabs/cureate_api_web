@@ -46,7 +46,7 @@ class Command(BaseCommand):
                     v = [x.strip('\n') for x in line.split(',')]
                     description_text = ','.join(v[12:])
                     title_name = v[11]
-                    image_url = v[10:]
+                    image_url = v[10]
                     v = v[:10]
                     v = [None if (x == '') or (x == ' ') else x for x in v]
                     
