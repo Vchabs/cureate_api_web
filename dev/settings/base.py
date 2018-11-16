@@ -26,6 +26,7 @@ THIRD_PARTY_APPS=(
 LOCAL_APPS=('content',
     'demographics',
     'diseases',
+    'users'
  )
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
@@ -138,6 +139,8 @@ REST_FRAMEWORK={
 
 
 ### Django-allauth related settings ###
+
+AUTH_USER_MODEL = 'users.User'
 
 AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',

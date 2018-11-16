@@ -32,6 +32,8 @@ urlpatterns = [
 
     path('accounts/', include('django.contrib.auth.urls')),
     url(r'^admin/', admin.site.urls),
-    url(r'^$',ContentListView.as_view(),name='home'),
+    # url(r'^$',ContentListView.as_view(),name='home'),
+    url(r'testContent/',ContentListView.as_view()),
+
 ]
 urlpatterns+=api_urls
