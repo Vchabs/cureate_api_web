@@ -21,11 +21,10 @@ class Command(BaseCommand):
         reading_level = ReadingLevel.objects.get(value = 'College')
         smoking_status = SmokingStatus.objects.get(value = 'Past Smoker')
         alcohol_status = AlcoholStatus.objects.get(value = '2-3x week (casual)')
-        for item in ActivityLevel.objects.all():
-            print(item.value)
+
 
         activity_level = ActivityLevel.objects.get(value__iregex = 'mi')
-        print(activity_level)
+
         disease = Disease.objects.get(value = 'CVD')
         complication = Complication.objects.get(value = 'Diabetes', disease = disease)
 
