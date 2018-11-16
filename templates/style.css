@@ -1,4 +1,7 @@
 
+
+
+
 /* Remove the navbar's default margin-bottom and rounded borders */ 
 .navbar {
     margin-bottom: 0;
@@ -14,6 +17,13 @@
     background-color: #f1f1f1;
     height: 100%;
 }
+
+.curate_menu_text{
+    color: #F4F0E6;
+    /*font-family:"Open Sans";
+
+}
+
 
 /* Set black background color, white text and some padding */
 footer {
