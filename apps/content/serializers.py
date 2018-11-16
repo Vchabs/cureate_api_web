@@ -6,4 +6,4 @@ from .models import Content
 class ContentSerializer(serializers.ModelSerializer):
     class Meta:
         model = Content
-        fields = ['title','description']
+        fields = ['title','description','image_url']

@@ -44,12 +44,16 @@ class Command(BaseCommand):
             for line in f:
                 if n > 0:
                     v = [x.strip('\n') for x in line.split(',')]
-                    description_text = ','.join(v[10: ])
+                    description_text = ','.join(v[11:])
+                    image_url = v[10:]
                     v = v[:10]
                     v = [None if (x == '') or (x == ' ') else x for x in v]
                     
                     content_type = ContentType.objects.get_or_create(value = 'Article')[0]
-                    content = Content.objects.get_or_create(title = 'test',description = description_text,image_url = 'https://www.guidedogs.org/wp-content/uploads/2018/01/Mobile.jpg', content_type = content_type)[0]
+                    content = Content.objects.get_or_create(title = 'test',
+                                                            description = description_text, 
+                                                            content_type = content_type,
+                                                            image_url = image_url)[0]
                     
 
                     age_ranges = _get_age_ranges(int(v[0]),int(v[1]))
