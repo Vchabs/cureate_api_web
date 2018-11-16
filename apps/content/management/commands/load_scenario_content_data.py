@@ -37,7 +37,8 @@ class Command(BaseCommand):
     help = 'Loads data'
 
     def handle(self, *args, **options):
-
+        Content.objects.all().delete()
+        ContentType.objects.all().delete()
         with open('data/content_sample_data.csv') as f:
             n = 0
             for line in f:
