@@ -165,6 +165,7 @@ services:
       - DATABASE_NAME=postgres
       - DATABASE_USER=postgres
       - DATABASE_PASSWORD=password #TODO set on postgres instance
+      - USER_ID=dockerbash
       - DATABASE_HOST=db
       - DATABASE_PORT=5432
       - SECRET_KEY=fsgsweoriqwevnzasdf43

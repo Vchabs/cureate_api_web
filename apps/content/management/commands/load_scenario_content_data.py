@@ -44,13 +44,14 @@ class Command(BaseCommand):
             for line in f:
                 if n > 0:
                     v = [x.strip('\n') for x in line.split(',')]
-                    description_text = ','.join(v[11:])
-                    image_url = v[10:]
+                    description_text = ','.join(v[12:])
+                    title_name = v[11]
+                    image_url = v[10]
                     v = v[:10]
                     v = [None if (x == '') or (x == ' ') else x for x in v]
                     
                     content_type = ContentType.objects.get_or_create(value = 'Article')[0]
-                    content = Content.objects.get_or_create(title = 'test',
+                    content = Content.objects.get_or_create(title = title_name,
                                                             description = description_text, 
                                                             content_type = content_type,
                                                             image_url = image_url)[0]

@@ -17,7 +17,7 @@ from django.conf.urls import include, url
 from django.urls import path
 from django.contrib import admin
 from main.views import Home
-from content.views import ContentListView
+from content.views import ContentListView,ContentDetailView
 
 
 api_urls = [
@@ -34,6 +34,9 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     # url(r'^$',ContentListView.as_view(),name='home'),
     url(r'testContent/',ContentListView.as_view()),
+    path('content/<uuid:pk>/', ContentDetailView.as_view(), name='detail'),
+
+    # url(r'content/',ContentListView.as_view()),
 
 ]
 urlpatterns+=api_urls

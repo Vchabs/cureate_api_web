@@ -1,60 +1,51 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <title>Bootstrap Example</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <link rel="stylesheet" href="styles.css">
+{% extends "base.html" %}
 
-</head>
-<body>
-
-<nav class="navbar navbar-inverse">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>                        
-      </button>
-      <a class="navbar-brand" href="#">Curate</a>
-    </div>
-    <div class="collapse navbar-collapse" id="myNavbar">
-      <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Home</a></li>
-        <li><a href="#">About</a></li>
-        <li><a href="#">Projects</a></li>
-        <li><a href="#">Contact</a></li>
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-      </ul>
-    </div>
-  </div>
-</nav>
+{% block content %}
   
 <div class="container text-center">    
   <div class="row content">
     <div class="col-1-2 sidenav">
     </div>
     <div class="col-3-10"> 
-      <h1>Hello
+      <h1 style="font-family:Merriweather;font-weight:bold;color:#204157">Hello
         {% if request.user.is_authenticated %}{{request.user.username}}{% endif %}! Welcome to Curate.
       </h1>
     </div>
     <div class="col-3-10"> 
       {% if content_list %}            
-      <ul>
+
+        
         {% for article in content_list %}
-          <div class="jumbotron">
-            <h4>{{ article.title }}</h4>
-            <p>{{article.description}}</p>
+          {% if forloop.first %}
+            <div class="row">
+          {% endif %}
+          <div class="col-xs-4">
+            <div class="panel panel-default">
+              <div class="panel-heading" style="background-color:#F4F0E6">
+                <h4 style="font-family:Merriweather;font-weight:bold;color:#204157">{{ article.title }}</h4>
+              </div>
+              <div class="panel-body">
+                <a href="{% url 'detail' article.ID %}">
+                  <img style="height:150px" src={{ article.image_url }}>
+                </a>
+             </div>
+            </div>
           </div>
-      </ul>
+          {% if forloop.counter|divisibleby:3 %}</div><div class="row">{% endif %}
+          {% if forloop.last %}</div>{% endif %}
         {% endfor %}
+
+<!--         {% for article in content_list %}
+          <div class="panel panel-default">
+            <div class="panel-heading" style="background-color:#F4F0E6">
+              <h4 style="font-family:Merriweather;font-weight:bold;color:#204157">{{ article.title }}</h4>
+            </div>
+            <div class="panel-body">
+              <img style="height:200px" src={{ article.image_url }}>
+          </div>
+        </div>
+
+        {% endfor %} -->
       {% else %}
         <p>There is no health information pushed to you yet!</p>
       {% endif %}  
@@ -65,9 +56,4 @@
   </div>
 </div>
 
-<footer class="container-fluid text-center">
-  <p>Copyright 2018</p>
-</footer>
-
-</body>
-</html>
+{% endblock %}
