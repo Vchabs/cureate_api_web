@@ -48,7 +48,7 @@ class Command(BaseCommand):
                     v = [None if (x == '') or (x == ' ') else x for x in v]
                     
                     content_type = ContentType.objects.get_or_create(value = 'Article')[0]
-                    content = Content.objects.get_or_create(title = 'test',description = description_text,image_url = 'test', content_type = content_type)[0]
+                    content = Content.objects.get_or_create(title = 'test',description = description_text,image_url = 'https://www.guidedogs.org/wp-content/uploads/2018/01/Mobile.jpg', content_type = content_type)[0]
                     
 
                     age_ranges = _get_age_ranges(int(v[0]),int(v[1]))
