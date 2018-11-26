@@ -65,6 +65,17 @@ class ActivityLevel(RowStatusModel):
 
 
 
+class TimeIntervalRange(RowStatusModel):
+
+    ID = models.AutoField(primary_key=True,db_column='time_interval_range_id')
+    #e.g. show from days 0 to week 2 or something like that
+    start_date_interval = models.DurationField(db_column='min_date_interval')
+    end_date_interval = models.DurationField(db_column='max_date_interval')
+
+    class Meta:
+        db_table = 'time_interval_range'
+
+
 """
 class State(RowStatusModel):
 

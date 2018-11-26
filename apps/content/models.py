@@ -6,6 +6,17 @@ from demographics.models import AgeLevel, Gender,Race, ReadingLevel, SmokingStat
 from diseases.models import Disease, Complication
 
 
+
+class SharePeriod(RowStatusModel):
+
+    ID = models.AutoField(primary_key=True,db_column='share_period_id')
+    #e.g. show from days 0 to week 2 or something like that
+    start_date_interval = models.DurationField(db_column='min_date_interval')
+    end_date_interval = models.DurationField(db_column='max_date_interval')
+
+    class Meta:
+        db_table = 'share_period'
+
 class ContentType(RowStatusModel):
 
     ID = models.AutoField(primary_key=True,db_column='content_type_id')
@@ -37,6 +48,7 @@ class Content(RowStatusModel):
     smoking_status = models.ManyToManyField(SmokingStatus)
     alcohol_status = models.ManyToManyField(AlcoholStatus)
     activity_level = models.ManyToManyField(ActivityLevel)
+    share_period = models.ForeignKey(SharePeriod, on_delete='PROTECT',db_column='share_period_id')
 
     class Meta:
         db_table = 'content'

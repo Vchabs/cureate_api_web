@@ -14,7 +14,7 @@ from users.models import User
 
 
 from psycopg2.extras import NumericRange
-
+from datetime import timezone,datetime
 
 
 class ContentViewSet(viewsets.ModelViewSet):
@@ -45,12 +45,12 @@ class ContentListView(LoginRequiredMixin,ListView):
                 # "reading_level":user.reading_level,
                 "smoking_status":user.smoking_status,
                 "alcohol_status":user.alcohol_status, 
-                "activity_level":user.activity_level
+                "activity_level":user.activity_level,
+                "share_period__start_date_interval__lte": datetime.now(timezone.utc) - user.diagnosis_date, # TODO check the timezones piece 
+                "share_period__end_date_interval__gte": datetime.now(timezone.utc) - user.diagnosis_date # TODO check the timezones piece 
                 }
         
         return Content.objects.filter(**kwargs)
-
-
 
 class ContentDetailView(DetailView):
     model = Content
