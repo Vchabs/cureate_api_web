@@ -14,6 +14,9 @@ class SharePeriod(RowStatusModel):
     start_date_interval = models.DurationField(db_column='min_date_interval')
     end_date_interval = models.DurationField(db_column='max_date_interval')
 
+    def __str__(self):
+        return '%s %s' % (self.start_date_interval, self.end_date_interval)
+
     class Meta:
         db_table = 'share_period'
 
@@ -21,6 +24,9 @@ class ContentType(RowStatusModel):
 
     ID = models.AutoField(primary_key=True,db_column='content_type_id')
     value = models.TextField(db_column='value', unique=True)
+
+    def __str__(self):
+        return self.value
 
     class Meta:
         db_table = 'content_type'

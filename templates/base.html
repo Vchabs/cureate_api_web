@@ -2,7 +2,7 @@
 {% load static from staticfiles %}
 <html lang="en">
 <head>
-  <title>Bootstrap Example</title>
+  <title>Curate Health</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -29,13 +29,21 @@
           </div>
           <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav">
-              <li><a href="#" style="font-family:Open Sans;color: #F4F0E6;">Home</a></li>
-              <li><a href="#" style="font-family:Open Sans;color: #F4F0E6;">About</a></li>
-              <li><a href="#" style="font-family:Open Sans;color: #F4F0E6;">Projects</a></li>
-              <li><a href="#" style="font-family:Open Sans;color: #F4F0E6;">Contact</a></li>
+              <li><a href="/home/" style="font-family:Open Sans;color: #F4F0E6;">Home</a></li>
+ <!--              <li><a href="#" style="font-family:Open Sans;color: #F4F0E6;">About</a></li> -->
+ <!--              <li><a href="#" style="font-family:Open Sans;color: #F4F0E6;">Projects</a></li>
+              <li><a href="#" style="font-family:Open Sans;color: #F4F0E6;">Contact</a></li> -->
             </ul>
             <ul class="nav navbar-nav navbar-right">
+
+              {% if request.user.is_authenticated %}
+              <li><a href="{% url 'logout' %}" style="font-family:Open Sans;color: #F4F0E6;"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+              {% endif %}
+
+              {% if request.user.is_authenticated %}
               <li><a href="#" style="font-family:Open Sans;color: #F4F0E6;"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+              {% endif %}
+
             </ul>
           </div>
         </div>

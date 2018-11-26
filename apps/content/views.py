@@ -5,10 +5,12 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 
 # from .filters import ContentFilterSet
 from .models import Content
+from .forms import ContentModelForm
 from demographics.models import AgeLevel, Gender,Race, ReadingLevel, SmokingStatus,AlcoholStatus,ActivityLevel
 from diseases.models import Disease, Complication
 
-from django.views.generic import ListView, DetailView
+from django.views.generic import ListView, DetailView, TemplateView
+from django.views.generic.edit import FormView
 
 from users.models import User
 
@@ -57,7 +59,19 @@ class ContentDetailView(DetailView):
     template_name = "content_detail.html"
 
 
+class ContentFormView(FormView):
+    template_name = 'form.html'
+    form_class = ContentModelForm
+    success_url = '/content/success/'
 
+    def form_valid(self, form):
+        # This method is called when valid form data has been POSTed.
+        # It should return an HttpResponse.
+        # form.send_email()
+        form.save()
+        return super().form_valid(form)
 
-
+class ContentFormSuccessView(TemplateView):
+    model = Content
+    template_name = "content_form_success.html"
 
