@@ -32,6 +32,10 @@ You should need to use Docker Compose to get this app running. To do so:
 
 If you used this, cite it in your README (This was from Khoa) file like this:
 
+## For anyone inspecting code quality:
+
+This was built effectively for a hackathon
+
 ###### Thanks to:
 We used Django boilerplate found here: https://github.com/Vchabs/django_boilerplate 
 Made by: Vishaal Chhabria and Omari "Thunder" Powell to get rolling
