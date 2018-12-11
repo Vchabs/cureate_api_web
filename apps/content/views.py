@@ -14,6 +14,7 @@ from django.views.generic.edit import FormView
 
 from users.models import User
 
+from django.conf import settings
 
 from psycopg2.extras import NumericRange
 from datetime import timezone,datetime
@@ -77,5 +78,5 @@ class ContentFormSuccessView(TemplateView):
 
 def acme_challenge(request):
     return HttpResponse(settings.ACME_CHALLENGE_CONTENT)
-    
+
 
