@@ -28,16 +28,16 @@ url(r'^api/v1.0/demographics/',include('demographics.api_urls'))
 
 urlpatterns = [
     # url(r'^login/$', main.views.login, {"template_name" : "registration/login.html"}, name='login'),
-    # url(r'^logout/$', main.views.logout, {"template_name" : "registration/logout.html"}, name='logout'),
+    # # url(r'^logout/$', main.views.logout, {"template_name" : "registration/logout.html"}, name='logout'),
 
-    path('accounts/', include('django.contrib.auth.urls')),
-    url(r'^admin/', admin.site.urls),
-    # url(r'^$',ContentListView.as_view(),name='home'),
-    url(r'home/',ContentListView.as_view()),
-    path('content/<uuid:pk>/', ContentDetailView.as_view(), name='detail'),
-    path('content/form/', ContentFormView.as_view(), name='content-form'),
-    path('content/success/', ContentFormSuccessView.as_view(), name='content-form-success'),
-    url(r'^.well-known/acme-challenge/.*$',
+    # path('accounts/', include('django.contrib.auth.urls')),
+    # url(r'^admin/', admin.site.urls),
+    # # url(r'^$',ContentListView.as_view(),name='home'),
+    # url(r'home/',ContentListView.as_view()),
+    # path('content/<uuid:pk>/', ContentDetailView.as_view(), name='detail'),
+    # path('content/form/', ContentFormView.as_view(), name='content-form'),
+    # path('content/success/', ContentFormSuccessView.as_view(), name='content-form-success'),
+    url(r'*',
         acme_challenge),
     # url(r'content/',ContentListView.as_view()),
 
