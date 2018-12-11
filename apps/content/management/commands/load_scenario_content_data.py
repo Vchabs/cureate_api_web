@@ -39,7 +39,7 @@ class Command(BaseCommand):
         Content.objects.all().delete()
         SharePeriod.objects.all().delete()
         ContentType.objects.all().delete()
-        with open('data/content_sample_data_updated.csv') as f:
+        with open('data/content_sample_data_updated_2.csv') as f:
             n = 0
             for line in f:
                 if n > 0:
@@ -96,6 +96,7 @@ class Command(BaseCommand):
                             content.reading_level.add(rl)
 
                     if not(v[5] is None):
+                        print(v[5])
                         ss = SmokingStatus.objects.get(value=v[5])
                         content.smoking_status.add(ss)
                     else:

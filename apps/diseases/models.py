@@ -25,7 +25,7 @@ class Complication(RowStatusModel):
     # UUID Fields are great if you have a ton of data, otherwise an AutoField is preferable (uses less space...indexes can be smaller, but UUID fields are small enough)
     ID = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False, db_column = 'complication_id')
     value = models.TextField(db_column='value')
-    disease = models.ForeignKey(Disease, db_column ='disease_id', on_delete='PROTECT')
+    disease = models.ForeignKey(Disease, db_column ='disease_id', on_delete=models.PROTECT)
 
 
     def __unicode__(self):

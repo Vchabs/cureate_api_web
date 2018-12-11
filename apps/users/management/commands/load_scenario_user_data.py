@@ -59,3 +59,28 @@ class Command(BaseCommand):
                                     disease=disease,
                                     complication=complication, 
                                     diagnosis_date=diagnosis_date)
+
+        gender = Gender.objects.get(value = 'Female')
+        age = AgeLevel.objects.get(value = NumericRange(41,45))
+        race = Race.objects.get(value = 'White')
+        reading_level = ReadingLevel.objects.get(value = 'College')
+        smoking_status = SmokingStatus.objects.get(value = 'Never Smoked')
+        alcohol_status = AlcoholStatus.objects.get(value = '1x week (social)')
+        activity_level = ActivityLevel.objects.get(value__iregex = 'he')
+        disease = Disease.objects.get(value = 'CVD')
+        diagnosis_date = datetime.now(timezone.utc)
+
+
+
+        user = User.objects.create_user(username="Paula",
+                                    password="paula",
+                                    smoking_status=smoking_status, 
+                                    age_level=age,
+                                    gender=gender,
+                                    race=race, 
+                                    reading_level=reading_level, 
+                                    alcohol_status = alcohol_status,
+                                    activity_level=activity_level,
+                                    disease=disease,
+                                    complication=complication, 
+                                    diagnosis_date=diagnosis_date)

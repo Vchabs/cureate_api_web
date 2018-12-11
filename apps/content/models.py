@@ -40,7 +40,7 @@ class Content(RowStatusModel):
     title = models.TextField(db_column='title')
     description = models.TextField(db_column='description')
     image_url = models.TextField(db_column='image_url')
-    content_type = models.ForeignKey(ContentType,  on_delete='PROTECT', db_column ='content_type')
+    content_type = models.ForeignKey(ContentType,  on_delete=models.PROTECT, db_column ='content_type')
 
     #Disease based fields
     diseases = models.ManyToManyField(Disease)
