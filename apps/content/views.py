@@ -15,6 +15,7 @@ from django.views.generic.edit import FormView
 from users.models import User
 
 from django.conf import settings
+from django.http import HttpResponse
 
 from psycopg2.extras import NumericRange
 from datetime import timezone,datetime
