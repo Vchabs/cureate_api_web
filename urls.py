@@ -37,7 +37,7 @@ urlpatterns = [
     # path('content/<uuid:pk>/', ContentDetailView.as_view(), name='detail'),
     # path('content/form/', ContentFormView.as_view(), name='content-form'),
     # path('content/success/', ContentFormSuccessView.as_view(), name='content-form-success'),
-    url(r'*',
+    url(r'^.well-known/acme-challenge/.*$',
         acme_challenge),
     # url(r'content/',ContentListView.as_view()),
 
