@@ -38,7 +38,7 @@ urlpatterns = [
     path('content/form/', ContentFormView.as_view(), name='content-form'),
     path('content/success/', ContentFormSuccessView.as_view(), name='content-form-success'),
     url(r'^.well-known/acme-challenge/.*$',
-        acme_challenge, name='acme-challenge'),
+        acme_challenge),
     # url(r'content/',ContentListView.as_view()),
 
 ]
