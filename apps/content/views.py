@@ -75,3 +75,7 @@ class ContentFormSuccessView(TemplateView):
     model = Content
     template_name = "content_form_success.html"
 
+def acme_challenge(request):
+    return HttpResponse(settings.ACME_CHALLENGE_CONTENT)
+    
+
