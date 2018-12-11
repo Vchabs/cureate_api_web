@@ -20,6 +20,7 @@ DJANGO_APPS = (
 THIRD_PARTY_APPS=(
     'rest_framework',
     'corsheaders',
+    'crispy_forms',
 )
 
 #Insert your apps here

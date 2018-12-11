@@ -2,13 +2,12 @@ from django.core.management.base import BaseCommand, CommandError
 from django.db import transaction
 import json
 
-from content.models import Content,ContentType
+from content.models import Content,ContentType, SharePeriod
 from demographics.models import AgeLevel, Gender,Race, ReadingLevel, SmokingStatus,AlcoholStatus,ActivityLevel
 from diseases.models import Disease, Complication
 
 from psycopg2.extras import NumericRange
-
-
+import datetime
 from django.contrib.auth.models import User
 
 
@@ -38,23 +37,30 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         Content.objects.all().delete()
+        SharePeriod.objects.all().delete()
         ContentType.objects.all().delete()
-        with open('data/content_sample_data.csv') as f:
+        with open('data/content_sample_data_updated.csv') as f:
             n = 0
             for line in f:
                 if n > 0:
                     v = [x.strip('\n') for x in line.split(',')]
-                    description_text = ','.join(v[12:])
-                    title_name = v[11]
-                    image_url = v[10]
-                    v = v[:10]
+                    description_text = ','.join(v[14:])
+                    title_name = v[13]
+                    image_url = v[12]
+                    v = v[:12]
                     v = [None if (x == '') or (x == ' ') else x for x in v]
-                    
+                    start_date = datetime.timedelta(days=int(v[10]))
+                    end_date = datetime.timedelta(days=int(v[11]))
+
+                    date_range = SharePeriod.objects.get_or_create(start_date_interval=start_date, end_date_interval=end_date)[0]
+
                     content_type = ContentType.objects.get_or_create(value = 'Article')[0]
+
                     content = Content.objects.get_or_create(title = title_name,
                                                             description = description_text, 
                                                             content_type = content_type,
-                                                            image_url = image_url)[0]
+                                                            image_url = image_url,
+                                                            share_period=date_range)[0]
                     
 
                     age_ranges = _get_age_ranges(int(v[0]),int(v[1]))

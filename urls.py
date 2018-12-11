@@ -17,7 +17,7 @@ from django.conf.urls import include, url
 from django.urls import path
 from django.contrib import admin
 from main.views import Home
-from content.views import ContentListView,ContentDetailView
+from content.views import ContentListView,ContentDetailView, ContentFormView, ContentFormSuccessView
 
 
 api_urls = [
@@ -33,8 +33,10 @@ urlpatterns = [
     path('accounts/', include('django.contrib.auth.urls')),
     url(r'^admin/', admin.site.urls),
     # url(r'^$',ContentListView.as_view(),name='home'),
-    url(r'testContent/',ContentListView.as_view()),
+    url(r'home/',ContentListView.as_view()),
     path('content/<uuid:pk>/', ContentDetailView.as_view(), name='detail'),
+    path('content/form/', ContentFormView.as_view(), name='content-form'),
+    path('content/success/', ContentFormSuccessView.as_view(), name='content-form-success'),
 
     # url(r'content/',ContentListView.as_view()),
 

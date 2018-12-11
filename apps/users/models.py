@@ -15,5 +15,7 @@ class User(AbstractUser,RowStatusModel):
 	activity_level = models.ForeignKey(ActivityLevel, db_column='activity_level_id', on_delete='PROTECT')
 	disease = models.ForeignKey(Disease, db_column ='disease_id', on_delete='PROTECT')
 	complication = models.ForeignKey(Complication, db_column ='complication_id', on_delete='PROTECT')
-
+	# This is going to have to be modeled differently because someone can definitely have multiple doctors appointments for each condition
+	# This next line is for demo purposes only and REALLY NEEDS TO BE REFACTORED FOR PRODUCTION
+	diagnosis_date = models.DateTimeField(db_column='diagnosis_date')
 

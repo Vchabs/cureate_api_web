@@ -6,8 +6,7 @@ from demographics.models import AgeLevel, Gender,Race, ReadingLevel, SmokingStat
 from diseases.models import Disease, Complication
 
 from psycopg2.extras import NumericRange
-
-
+from datetime import datetime, timezone, timedelta
 
 class Command(BaseCommand):
     help = 'Loads data'
@@ -27,10 +26,36 @@ class Command(BaseCommand):
 
         disease = Disease.objects.get(value = 'CVD')
         complication = Complication.objects.get(value = 'Diabetes', disease = disease)
+        diagnosis_date = datetime.now(timezone.utc)
 
 
-
-        user = User.objects.create_user(username="Dan",password="dan", smoking_status=smoking_status, age_level=age, gender=gender,race=race, reading_level=reading_level, alcohol_status = alcohol_status,activity_level=activity_level,disease=disease,complication=complication)
+        user = User.objects.create_user(username="Dan",
+                                    password="dan", 
+                                    smoking_status=smoking_status, 
+                                    age_level=age, 
+                                    gender=gender,
+                                    race=race, 
+                                    reading_level=reading_level, 
+                                    alcohol_status = alcohol_status,
+                                    activity_level=activity_level,
+                                    disease=disease,
+                                    complication=complication, 
+                                    diagnosis_date=diagnosis_date)
 
    
+        # Create another Dan 20 days away
+        diagnosis_date = datetime.now(timezone.utc) - timedelta(days=20)
+        
 
+        user = User.objects.create_user(username="Dan (@ 20 days)",
+                                    password="dan",
+                                    smoking_status=smoking_status, 
+                                    age_level=age,
+                                    gender=gender,
+                                    race=race, 
+                                    reading_level=reading_level, 
+                                    alcohol_status = alcohol_status,
+                                    activity_level=activity_level,
+                                    disease=disease,
+                                    complication=complication, 
+                                    diagnosis_date=diagnosis_date)
