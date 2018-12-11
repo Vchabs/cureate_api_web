@@ -9,6 +9,13 @@ class Disease(RowStatusModel):
     ID = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False, db_column = 'disease_id')
     value = models.TextField(db_column='title')
     
+
+    def __unicode__(self):
+        return '%s' % self.value
+
+    def __str__(self):
+        return '%s' % self.value
+        
     class Meta:
         db_table = 'disease'
 
@@ -19,6 +26,13 @@ class Complication(RowStatusModel):
     ID = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False, db_column = 'complication_id')
     value = models.TextField(db_column='value')
     disease = models.ForeignKey(Disease, db_column ='disease_id', on_delete='PROTECT')
+
+
+    def __unicode__(self):
+        return '%s' % self.disease
+
+    def __str__(self):
+        return '%s' % self.value
 
     class Meta:
         db_table = 'complication'

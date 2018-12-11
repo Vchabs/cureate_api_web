@@ -12,3 +12,4 @@ django-cors-headers
 django-heroku
 gunicorn
 dj_database_url
+django-crispy-forms
