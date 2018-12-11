@@ -2,7 +2,7 @@ import django_heroku
 
 from .base import *
 
-DEBUG = bool(os.environ.get('DEBUG',False))
+DEBUG = bool(os.environ.get('DEBUG',True))
 
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 HTTPS='on'
