@@ -21,7 +21,8 @@ services:
       - DATABASE_HOST=db
       - DATABASE_PORT=5432
       - SECRET_KEY=fsgsweoriqwevnzasdf43
-      - USER_ID='docker'    
+      - USER_ID='docker'
+      - ACME_CHALLENGE_CONTENT=apple    
     volumes:
       - .:/code
     depends_on:
@@ -148,6 +149,7 @@ services:
       - DATABASE_PORT=5432
       - SECRET_KEY=fsgsweoriqwevnzasdf43
       - USER_ID='docker'    
+      - ACME_CHALLENGE_CONTENT=apple
     volumes:
       - .:/code
     ports:
@@ -171,6 +173,7 @@ services:
       - DATABASE_HOST=db
       - DATABASE_PORT=5432
       - SECRET_KEY=fsgsweoriqwevnzasdf43
+      - ACME_CHALLENGE_CONTENT=apple    
     volumes:
       - .:/code
     depends_on:
